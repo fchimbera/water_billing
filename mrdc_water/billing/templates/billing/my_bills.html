@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>My Bills</h2>
+    {% if bills %}
+        <ul>
+            {% for bill in bills %}
+                <li>
+                    Bill for period ending {{ bill.billing_period_end }}:
+                    Amount Due: {{ bill.amount_due }} (Paid: {{ bill.is_paid|yesno:"Yes,No" }})
+                    <a href="{% url 'bill-detail' bill.id %}">View Details</a>
+                    <a href="{% url 'user-bills-detail-api' bill.id %}">View Details (API)</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No bills available.</p>
+    {% endif %}
+    <a href="{% url 'add-reading' %}">Add New Reading</a>
+{% endblock %}
+{%block content%}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{%endblock%}

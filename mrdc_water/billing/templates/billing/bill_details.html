@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Bill Details</h2>
+    {% if bill %}
+        <p><strong>Billing Period Start:</strong> {{ bill.billing_period_start }}</p>
+        <p><strong>Billing Period End:</strong> {{ bill.billing_period_end }}</p>
+        <p><strong>Previous Reading Value:</strong> {{ bill.previous_reading_value }}</p>
+        <p><strong>Current Reading Value:</strong> {{ bill.meter_reading.reading_value }}</p>
+        <p><strong>Consumption:</strong> {{ bill.consumption }}</p>
+        <p><strong>Rate Used:</strong> {{ bill.rate_used.rate_per_unit }}</p>
+        <p><strong>Amount Due:</strong> {{ bill.amount_due }}</p>
+        <p><strong>Due Date:</strong> {{ bill.due_date }}</p>
+        <p><strong>Paid:</strong> {{ bill.is_paid|yesno:"Yes,No" }}</p>
+        {% if bill.is_paid %}
+            <p><strong>Paid Date:</strong> {{ bill.paid_date }}</p>
+        {% endif %}
+    {% else %}
+        <p>Bill not found.</p>
+    {% endif %}
+    <a href="{% url 'user-bills-list-api' %}">Back to My Bills (API)</a>
+    <a href="{% url 'my-bills' %}">Back to My Bills</a>
+{% endblock %}
+{%block content%}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{%endblock%}
