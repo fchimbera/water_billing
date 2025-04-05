@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
     <h2>My Bills</h2>
     {% if bills %}
         <ul>
@@ -17,6 +18,3 @@
     {% endif %}
     <a href="{% url 'add-reading' %}">Add New Reading</a>
 {% endblock %}
-{%block content%}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-{%endblock%}

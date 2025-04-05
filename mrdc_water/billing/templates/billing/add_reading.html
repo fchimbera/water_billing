@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
     <h2>Add Meter Reading</h2>
     <form method="post">
         {% csrf_token %}
@@ -8,6 +9,3 @@
     </form>
     <a href="{% url 'user-bills-list-api' %}">View My Bills (API)</a>
 {% endblock %}
-{%block content%}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-{%endblock%}

@@ -7,6 +7,7 @@ from .services import calculate_and_create_bill
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import MeterReadingForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 class MeterReadingCreateAPIView(generics.CreateAPIView):

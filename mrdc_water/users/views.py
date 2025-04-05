@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 User = get_user_model()
 
 # API Views
+# user registration view
 class UserRegistrationAPIView(generics.CreateAPIView):
     serializer_class = UserRegistrationSerializer
     permission_classes = [AllowAny]
@@ -25,6 +26,7 @@ class UserLoginAPIView(views.APIView):
         token, created = Token.objects.get_or_create(user=user)
         return response.Response({'token': token.key, 'role': user.role, 'username': user.username}) #added user role to response
 
+# User Profile API View
 class UserProfileAPIView(generics.RetrieveUpdateAPIView):
     serializer_class = UserProfileSerializer
     permission_classes = [IsAuthenticated]

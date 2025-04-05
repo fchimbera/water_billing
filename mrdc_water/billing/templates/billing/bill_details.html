@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <h2>Bill Details</h2>
     {% if bill %}
         <p><strong>Billing Period Start:</strong> {{ bill.billing_period_start }}</p>
@@ -20,6 +21,3 @@
     <a href="{% url 'user-bills-list-api' %}">Back to My Bills (API)</a>
     <a href="{% url 'my-bills' %}">Back to My Bills</a>
 {% endblock %}
-{%block content%}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-{%endblock%}
